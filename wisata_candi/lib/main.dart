@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:wisata_candi/screens/detail_screen.dart';
+import 'package:wisata_candi/data/candi_data.dart';
 
 void main() {
   runApp(const MainApp());
@@ -16,16 +18,9 @@ class MainApp extends StatelessWidget {
             seedColor: Colors.deepPurple), // Untuk Tema Warna
         useMaterial3: true,
       ),
-      home: DetailScreen(),
+      home: DetailScreen(
+        candi: candiList[0],
+      ),
     );
-  }
-}
-
-class DetailScreen extends StatelessWidget {
-  const DetailScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
   }
 }
