@@ -46,6 +46,37 @@ class DetailScreen extends StatelessWidget {
               ),
             ],
           ),
+          // DETAIL INFO
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Column(
+              children: [
+                //Info Atas (Nama Candi dan Tombol Favorit)
+                const SizedBox(
+                  height: 16, // Kasih Jarak dengan Stack di atas
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  // Supaya Posisi Teks dan Tombol Sama
+                  children: [
+                    Text(
+                      candi.name,
+                      style: const TextStyle(
+                        // const agar tidak berubah"
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.favorite_border)),
+                  ],
+                ),
+                //Info Tengah
+                //Info Bawah
+              ],
+            ),
+          ),
         ],
       ),
     );
