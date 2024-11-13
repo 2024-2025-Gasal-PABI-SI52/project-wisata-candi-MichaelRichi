@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:wisata_candi/models/candi.dart';
 
@@ -166,6 +167,84 @@ class DetailScreen extends StatelessWidget {
                 ),
               ),
               // DETAIL GALLERY
+              Padding(
+                padding: const EdgeInsets.all(15),
+                child: Column(
+                  //Supaya Start Dari Kiri
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    Divider(
+                      color: Colors.deepPurple.shade100,
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    const Text('Galeri',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        )),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    SizedBox(
+                      height: 100,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: candi.imageUrls.length,
+                        // Untuk Menghitung Tempat Tersedia Untuk Gambar pada ListView
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.only(right: 8),
+                            child: GestureDetector(
+                              // GestureDetector untuk menambahkan fitur OnTap Agar bisa diperbesar
+                              onTap: () {},
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12),
+                                  border: Border.all(
+                                    color: Colors.deepPurple.shade100,
+                                    width: 2,
+                                  ),
+                                ),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(12),
+                                  child: CachedNetworkImage(
+                                    // Melakukan Wrap pada Cached dengan ClipRRect
+                                    imageUrl: candi.imageUrls[index],
+                                    width: 120,
+                                    height: 120,
+                                    fit: BoxFit.cover, // Proposionalitas Gambar
+                                    placeholder: (context, url) => Container(
+                                      width: 120,
+                                      height: 120,
+                                      color: Colors.deepPurple[50],
+                                    ),
+                                    //Kira" Gambar Apa yang mau diletakkan sebagai placeHolder
+                                    errorWidget: (context, url, error) =>
+                                        const Icon(Icons.error),
+                                    //Kalau gambar tidak terload maka ditampilkan icon error
+                                  ),
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 4,
+                    ),
+                    const Text(
+                      'Tap Untuk Memperbesar',
+                      style: TextStyle(fontSize: 12, color: Colors.black54),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
