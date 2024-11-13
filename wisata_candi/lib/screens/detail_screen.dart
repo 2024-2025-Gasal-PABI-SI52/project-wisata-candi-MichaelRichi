@@ -11,17 +11,40 @@ class DetailScreen extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: Image.asset(
-                candi.imageAsset, // Diambil dari data candi_data
-                width: double.infinity, // Agar Gambar Full dari kiri ke kanan
-                height: 300,
-                fit: BoxFit.cover, // Agar porsinya proposional
+          // DETAIL HEADER
+          // Image Utama
+          Stack(
+            // Agar bisa menumpuk dilakukan wrap menggunakan stack
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Image.asset(
+                    candi.imageAsset, // Diambil dari data candi_data
+                    width:
+                        double.infinity, // Agar Gambar Full dari kiri ke kanan
+                    height: 300,
+                    fit: BoxFit.cover, // Agar porsinya proposional
+                  ),
+                ),
               ),
-            ),
+              // Tombol Back Custom
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Container(
+                  // Untuk Dekorasi
+                  decoration: BoxDecoration(
+                    color: Colors.deepPurple[100]?.withOpacity(0.8),
+                    shape: BoxShape.circle,
+                  ),
+                  child: IconButton(
+                    onPressed: () {},
+                    icon: const Icon(Icons.arrow_back),
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),
