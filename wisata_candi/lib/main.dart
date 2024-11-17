@@ -16,8 +16,19 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       title: 'Wisata Candi',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-            seedColor: Colors.deepPurple), // Untuk Tema Warna
+        appBarTheme: const AppBarTheme(
+          iconTheme: IconThemeData(color: Colors.deepPurple),
+          titleTextStyle: TextStyle(
+            color: Colors.deepPurple,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        colorScheme:
+            ColorScheme.fromSeed(seedColor: Colors.deepPurple).copyWith(
+          primary: Colors.deepPurple,
+          surface: Colors.deepPurple[50],
+        ), // Untuk Tema Warna
         useMaterial3: true,
       ),
       //home: DetailScreen(candi: candiList[0],),

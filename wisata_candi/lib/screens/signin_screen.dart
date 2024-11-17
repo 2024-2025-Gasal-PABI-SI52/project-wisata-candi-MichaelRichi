@@ -1,16 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 
-class SigninScreen extends StatelessWidget {
+class SigninScreen extends StatefulWidget {
+  // Stateless Widget Untuk mempermudah perubahan widget
   SigninScreen({super.key});
 
+  @override
+  State<SigninScreen> createState() => _SigninScreenState();
+}
+
+class _SigninScreenState extends State<SigninScreen> {
   //TODO: 1. Deklarasikan Variabel Yang Dibutuhkan
-  //TextEditingController = Untuk TextBox
   final TextEditingController _usernameController = TextEditingController();
+
   final TextEditingController _passwordController = TextEditingController();
 
   String _errorText = '';
+
   bool _isSignIn = false;
+
   bool _obscurePassword = true;
 
   @override
@@ -52,7 +60,12 @@ class SigninScreen extends StatelessWidget {
                       border: const OutlineInputBorder(),
                       errorText: _errorText.isNotEmpty ? _errorText : null,
                       suffixIcon: IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          // Agar Kata Sandi Bisa Ditampilkan/Disembunyikan
+                          setState(() {
+                            _obscurePassword = !_obscurePassword;
+                          });
+                        },
                         icon: Icon(
                           _obscurePassword
                               ? Icons.visibility_off
